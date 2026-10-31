@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-8rmi1j38ofrw5D6d5BKxSF6S7a7Mg79lJ0MgW0apbI0='; style-src 'unsafe-inline'">
+<title>…</title>
+<style>body{margin:0;height:100vh;display:grid;place-items:center;background:#0f1117;color:#9299aa;font:15px system-ui,sans-serif}a{color:#7d93ff}</style>
+</head><body><p id="m">…</p>
+<script>
+(function(){
+  var h = decodeURIComponent(location.hash.slice(1)), m = document.getElementById('m');
+  var r = /^([a-z0-9.]{3,40})\/([\p{L}\p{N}@._+\- ]{0,100})$/u.exec(h);
+  if(!r){ m.textContent = 'Неверная ссылка'; return; }
+  var u = 'cfmail://' + r[1] + '/' + encodeURIComponent(r[2]);
+  location.replace(u);
+  m.textContent = '';
+  var a = document.createElement('a'); a.href = u; a.textContent = 'Открыть ещё раз';
+  m.append('Открыто. Вкладку можно закрыть · ', a);
+  history.replaceState(null, '', location.pathname);
+})();
+</script>
+</body></html>
